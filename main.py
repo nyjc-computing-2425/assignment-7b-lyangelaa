@@ -10,7 +10,8 @@ for score, grade in score_ranges:
 
 def read_testscores(filename):
     """
-    
+    Returns student data in the form of dict with the keys 'class', 
+'name', 'overall', 'grade'
     """
     filename = "testscores.csv"
     header = []
@@ -41,7 +42,12 @@ def read_testscores(filename):
         return student_data
 def analyze_grades(studentdata):
     """
-    
+    Returns the count of each grade for each class
+
+    Example
+    analysis = analyze_grades(studentdata)
+    analysis['Class1']['A']
+    4
     """
     studentdata = read_testscores("testscores.csv")
     class_grades = {}
@@ -50,7 +56,7 @@ def analyze_grades(studentdata):
         if student_class not in class_grades:
                 class_grades[student_class] = {'A': 0, 'B': 0, 'C': 0, 'D': 0, 'E': 0, 'S': 0, 'U': 0}
 
-        # Count grades for each class
+  
     for student in studentdata:
         student_class = student['class']
         grade = student['grade']
